@@ -7,13 +7,19 @@
     "build": "tsc -b",
     "check": "tsc -b --pretty false",
     "test": "tsx --test src/**/*.test.ts",
-    "dev": "tsx watch src/bot/index.ts",
+    "dev": "tsx watch src/bot/bootstrap.ts",
+    "start": "tsx src/bot/bootstrap.ts",
     "register:commands": "tsx src/bot/register-commands.ts"
   },
   "dependencies": {
     "@anime/contracts": "*",
     "@anime/voice-worker": "*",
     "discord.js": "^14.25.1",
+    "ffmpeg-static": "^5.3.0",
+    "pg": "^8.23.0",
     "zod": "^3.24.3"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.21.0"
   }
 }

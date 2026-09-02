@@ -14,6 +14,8 @@ pip install -e ".[models]"
 ```
 
 MeloTTS는 Windows에서 호환성 문제가 있을 수 있으므로, 문제가 발생하면 해당 제공자만 Docker/Linux 환경으로 옮긴다. API 경계는 변하지 않는다.
+For the Korean MeloTTS fallback on Windows, install Microsoft C++ Build Tools before `pip install -e ".[models]"`; the optional model dependencies include `eunjeon`.
+
 
 ## 실행
 

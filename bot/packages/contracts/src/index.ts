@@ -1,19 +1,23 @@
-export type TurnModality = 'text' | 'voice';
+export { SELINE_PERSONA } from './seline-persona.js';
+export { characterCatalog, DEFAULT_CHARACTER_ID, getCharacter, getSelectableCharacter, type CharacterDefinition, type CharacterId, type CharacterStatus } from './characters.js';
 
-export type VoiceProvider = 'melotts' | 'kokoro' | 'chatterbox';
+export type TurnModality = 'text' | 'voice';
+export type TurnInputSource = 'discord_text' | 'voice_transcript' | 'voice_channel_text';
+
+export type VoiceProvider = 'melotts' | 'kokoro' | 'chatterbox' | 'gemini';
 
 export type VoiceProfile = {
   id: string;
   version: number;
   provider: VoiceProvider;
-  language: 'ko' | 'en-US';
+  language: 'ko' | 'en-US' | 'ja';
   settings: Record<string, string | number | boolean>;
   status: 'draft' | 'published' | 'disabled';
 };
 
 /**
- * Discord 텍스트와 음성 전사 결과가 Conversation API에 전달하는 공통 형식입니다.
- * 이 객체에는 원본 오디오나 Discord 토큰을 포함하지 않습니다.
+ * Discord ?띿뒪?몄? ?뚯꽦 ?꾩궗 寃곌낵媛 Conversation API???꾨떖?섎뒗 怨듯넻 ?뺤떇?낅땲??
+ * ??媛앹껜?먮뒗 ?먮낯 ?ㅻ뵒?ㅻ굹 Discord ?좏겙???ы븿?섏? ?딆뒿?덈떎.
  */
 export type TurnEnvelope = {
   eventId: string;
@@ -22,10 +26,28 @@ export type TurnEnvelope = {
   userId: string;
   conversationId: string;
   modality: TurnModality;
+  /** Distinguishes spoken transcripts from text typed while a voice session is active. */
+  source?: TurnInputSource;
   canonicalText: string;
   occurredAt: string;
   sttConfidence?: number;
+  personalPreferences?: Record<string, string | boolean>;
 };
+
+export {
+  buildConversationPrompt,
+  buildNaturalRewritePrompt,
+  conversationSource,
+  inspectNaturalness,
+  shouldUseReasoning,
+  type ConversationMessage,
+  type ConversationMove,
+  type ConversationSituationState,
+  type ConversationPrompt,
+  type ConversationPromptContext,
+  type ConversationStyleState,
+  type NaturalnessIssue
+} from './conversation-prompt.js';
 
 export type ConversationReply = {
   conversationId: string;
@@ -50,6 +72,9 @@ export type MemorySummary = {
   id: string;
   summary: string;
   createdAt: string;
+  isPinned?: boolean;
+  confidence?: number;
+  evidenceCount?: number;
 };
 
 export type VoiceConsentUpdate = {

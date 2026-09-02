@@ -1,0 +1,4 @@
+{
+  "logMode": "compact",
+  "defaultModel": "qwen3:1.7b"
+}

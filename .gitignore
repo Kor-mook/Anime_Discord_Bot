@@ -91,3 +91,7 @@ next-env.d.ts
 
 # Local FFmpeg binary used by the bot's voice service
 /bot/tools/ffmpeg/
+
+# Bot-local virtual environment and editor backup copies
+/bot/apps/voice-service/.venv/
+/bot/**/*.orig

@@ -16,9 +16,10 @@ dependencies = [
 
 [project.optional-dependencies]
 models = [
-  "faster-whisper>=1.1,<2",
+  "openai-whisper>=20240930",
   "kokoro>=0.9.4,<1",
-  "melotts @ git+https://github.com/myshell-ai/MeloTTS.git@main"
+  "melotts @ git+https://github.com/myshell-ai/MeloTTS.git@main",
+  "eunjeon"
 ]
 
 [tool.setuptools.packages.find]

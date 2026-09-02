@@ -1,5 +1,5 @@
 {
-  "name": "discord-anime-bot",
+  "name": "discord-anime",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -11,10 +11,10 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "npm run dev --workspace=@anime/discord-bot",
-    "build": "npm run build --workspaces --if-present",
-    "check": "tsc -b tsconfig.services.json --pretty false",
+    "build": "tsc -b",
     "test": "npm run test --workspaces --if-present",
+    "check": "tsc -b --pretty false",
+    "dev:bot": "npm run dev --workspace=@anime/discord-bot",
     "register:commands": "npm run register:commands --workspace=@anime/discord-bot"
   },
   "devDependencies": {
